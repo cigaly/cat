@@ -9,7 +9,7 @@ import numpy as np
 
 PATH = './cifar_net.pth'
 IMAGE = 'Cat03.jpeg' if len(argv) < 2 else argv[1]
-batch_size = 1
+# batch_size = 1
 
 transform = transforms.Compose([
     torch.from_numpy,
@@ -17,7 +17,7 @@ transform = transforms.Compose([
     transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
 ])
 
-model = torch.load(PATH, weights_only=False)
+# model = torch.load(PATH, weights_only=False)
 
 classes = ('plane', 'car', 'bird', 'cat',
            'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
@@ -52,4 +52,4 @@ trgb = transform(nprgb)
 outputs = net(trgb)
 
 best, predicted = torch.max(outputs, 1)
-print(best[0].item(), ' ', predicted[0].item(), ' ', classes[predicted[0]])
+print(classes[predicted[0]], ' ', predicted[0].item(), ' ', best[0].item())
